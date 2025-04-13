@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Date et Heure - Express Server Demo</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="text-center my-5">
+      <h1 class="display-4">Express Server Demo</h1>
+      <p class="lead">Un serveur Express simple avec des routes pour Hello World et Date</p>
+    </header>
+    
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card main-card">
+          <div class="card-body text-center">
+            <h2 class="card-title">Date et Heure</h2>
+            <div id="date-info">
+              <div class="loading-spinner">
+                <div class="spinner-border text-primary" role="status">
+                  <span class="visually-hidden">Chargement...</span>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-center mt-4">
+                <a href="/" class="btn btn-outline-primary me-2">Hello World</a>
+                <a href="/date" class="btn btn-primary active">Date et Heure</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <footer class="text-center text-muted mt-5">
+        <p>Créé avec Express.js, Bootstrap et CSS</p>
+      </footer>
+    </div>
+     <!--
+    <script>
+      // Fetch current date/time from the API
+      fetch('/api/date')
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById('datetime').textContent = data;
+        });
+    </script>-->
+  
+    <script>
+      // Fetch data from API
+      fetch('/api/date')
+          .then(response => response.json())  // Parse as JSON
+          .then(data => {
+              // Display the date and time separately
+              const dateInfo = document.getElementById('date-info');
+              dateInfo.innerHTML = `
+                  <div class="date-display">
+                      <div class="date-item">
+                          <span class="date-label">Date:</span>
+                          <span class="date-value">${data.date}</span>
+                      </div>
+                      <div class="date-item">
+                          <span class="date-label">Time:</span>
+                          <span class="date-value">${data.time}</span>
+                      </div>
+                      <!-- Optional: include timestamp if needed -->
+                      <div class="date-item small">
+                          <span class="date-label">Timestamp:</span>
+                          <span class="date-value timestamp">${data.timestamp}</span>
+                      </div>
+                  </div>
+              `;
+          })
+          .catch(error => {
+              const dateInfo = document.getElementById('date-info');
+              dateInfo.innerHTML = '<div class="alert alert-danger">Server connection error</div>';
+              console.error('Error:', error);
+          });
+  </script>
+    
+</body>
+</html> 
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Date et Heure</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Date et Heure Actuelles</h1>
+  <p id="datetime">Chargement...</p>
+  <a href="/">⬅ Retour à l'accueil</a>
+
+  <script>
+    // Fetch current date/time from the API
+    fetch('/api/date')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('datetime').textContent = data;
+      });
+  </script>
+</body>
+</html>-->
