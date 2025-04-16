@@ -26,9 +26,8 @@ Main application entry point (app.js)
 
 ![image](https://github.com/user-attachments/assets/fbab776a-ba46-47a8-b2f0-5eca7c133c00)
 
-- **Exercise II.1:** Créer un ensemble de routes pour une API de gestion de tâches
 
-# 🖥️ Task Manager Web Interface
+# 🖥️ Exercise II.1:** Créer un ensemble de routes pour une API de gestion de tâches
 
 A lightweight front-end interface built with **HTML + Vanilla JavaScript** to interact with the ExpressJS Task API using buttons
 
