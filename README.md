@@ -20,8 +20,17 @@ Create a basic Express server that responds to:
 - `/date` with the current date and time
   ![image](https://github.com/user-attachments/assets/e80a3b55-11bb-4b0a-96ea-c22948356a56)
 
-### 🚀 How to Run
+### 🧱 Exercise I.2 - Express Project Structure
 
-1. Install dependencies:
-   ```bash
-   npm install
+### 📋 Goal
+Set up a clean and scalable ExpressJS project structure with:
+
+Modular routing (/routes)
+
+Static file serving (/public)
+
+Main application entry point (app.js)
+
+📁 Project Structure
+![image](https://github.com/user-attachments/assets/fbab776a-ba46-47a8-b2f0-5eca7c133c00)
+
