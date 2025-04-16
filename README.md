@@ -31,6 +31,7 @@ Static file serving (/public)
 
 Main application entry point (app.js)
 
-📁 Project Structure
+### 📁 Project Structure
+
 ![image](https://github.com/user-attachments/assets/fbab776a-ba46-47a8-b2f0-5eca7c133c00)
 
