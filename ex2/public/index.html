@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Task Manager</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>📝 Task Manager</h1>
+  
+      <div class="task-input">
+        <input id="newTask" placeholder="Task title" />
+        <button onclick="createTask()">Add Task</button>
+      </div>
+  
+      <div id="tasks"></div>
+    </div>
+  
+    <script>
+      const API = '/tasks';
+  
+      async function fetchTasks() {
+        const res = await fetch(API);
+        const data = await res.json();
+  
+        const container = document.getElementById('tasks');
+        container.innerHTML = '';
+        data.forEach(task => {
+          const el = document.createElement('div');
+          el.className = 'task';
+          el.innerHTML = `
+            <strong>${task.title}</strong> (ID: ${task.id})<br/>
+            <input id="edit-${task.id}" placeholder="New title" />
+            <button onclick="updateTask(${task.id})">Update</button>
+            <button onclick="deleteTask(${task.id})">Delete</button>
+          `;
+          container.appendChild(el);
+        });
+      }
+      async function createTask() {
+      const title = document.getElementById('newTask').value;
+      await fetch(API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title })
+      });
+      document.getElementById('newTask').value = '';
+      fetchTasks();
+    }
+
+    async function updateTask(id) {
+      const newTitle = document.getElementById(`edit-${id}`).value;
+      await fetch(`${API}/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title: newTitle })
+      });
+      fetchTasks();
+    }
+
+    async function deleteTask(id) {
+      await fetch(`${API}/${id}`, { method: 'DELETE' });
+      fetchTasks();
+    }
+
+    function renderTask(task) {
+      const el = document.createElement('div');
+      el.className = 'task';
+      el.innerHTML = `
+         <div>
+          <strong>${task.title}</strong>
+        </div>
+        <div class="task-actions">
+          <input id="edit-${task.id}" placeholder="New title" />
+          <button class="btn-update" onclick="updateTask(${task.id})">Update</button>
+          <button class="btn-delete" onclick="deleteTask(${task.id})">Delete</button>
+        </div>
+      `;
+      return el;
+    }
+
+    async function fetchTasks() {
+      const res = await fetch(API);
+      const data = await res.json();
+
+      const container = document.getElementById('tasks');
+      container.innerHTML = '';
+      data.forEach(task => {
+        container.appendChild(renderTask(task));
+      });
+    }
+
+    fetchTasks();
+  </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+    :root {
+      --primary-purple: #9b87f5;
+      --secondary-purple: #7E69AB;
+      --light-purple: #D6BCFA;
+      --soft-gray: #F1F0FB;
+      --dark-charcoal: #221F26;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: var(--soft-gray);
+      color: var(--dark-charcoal);
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    .container {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+
+    h1 {
+      color: var(--primary-purple);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .task-input {
+      display: flex;
+      margin-bottom: 20px;
+    }
+    .task-input input {
+      flex-grow: 1;
+      padding: 10px;
+      border: 2px solid var(--light-purple);
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+
+    .task-input button {
+      background-color: var(--primary-purple);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .task-input button:hover {
+      background-color: var(--secondary-purple);
+    }
+
+    .task {
+      background-color: var(--soft-gray);
+      border: 1px solid var(--light-purple);
+      border-radius: 4px;
+      padding: 10px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .task-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .task-actions input {
+      flex-grow: 1;
+      padding: 5px;
+      border: 1px solid var(--light-purple);
+      border-radius: 4px;
+    }
+    .btn-update, .btn-delete {
+      padding: 5px 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+    }
+
+    .btn-update {
+      background-color: var(--primary-purple);
+      color: white;
+    }
+
+    .btn-delete {
+      background-color: #ea384c;
+      color: white;
+    }
+
+    .btn-update:hover, .btn-delete:hover {
+      opacity: 0.8;
+    }
+ 
