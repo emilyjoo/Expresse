@@ -31,7 +31,8 @@ Main application entry point (app.js)
 
 A lightweight front-end interface built with **HTML + Vanilla JavaScript** to interact with the ExpressJS Task API using buttons
 
-![image](https://github.com/user-attachments/assets/0ce6b82c-3c2f-4a48-acc9-070e02c1904d)
+![image](https://github.com/user-attachments/assets/6ba7f362-2f0a-4cd3-b9e7-58d2c803e116)
+
 
 ---
 
